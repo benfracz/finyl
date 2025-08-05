@@ -15,7 +15,7 @@
               <div class="overlap-group">
                 </div>
               </div>
-              <div class="text-wrapper">Hi, {{ user_first_name }} 👋</div>
+              <div class="text-wrapper">Hi, {{ session.get('user_first_name', 'there') }} 👋</div>
               <p class="how-may-i-help-you">How may I help</br>you today?</p>
               <div class="text-wrapper-2">Current Value - GBP</div>
               <div class="text-wrapper-3">{{ total_value }}</div>
