@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link href="{{ url_for('static', filename='globals.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='landing-styles.css') }}" rel="stylesheet">    
+  </head>
+  <body>
+    <div class="landing-page">
+      <div class="div">
+        <p class="ready-to-transform">
+          <span class="text-wrapper">Ready to </span>
+          <span class="span">transform</span>
+          <span class="text-wrapper-2"></span>
+          <span class="text-wrapper">your collection?</span>
+        </p>
+        <div class="overlap">
+          <img class="chatgpt-image-jul" src="{{ url_for('static', filename='img/Finyl_logo.png') }}" />
+          <div class="text-wrapper-3">FINYL</div>
+        </div>
+        <a href="{{ url_for('login') }}" class="start-now-button">
+          <div class="overlap-group">
+            <div class="rectangle"></div>
+            <div class="text-wrapper-4">Start now</div>
+          </div>
+        </a>        
+      </div>
+    </div>
+  </body>
+</html>

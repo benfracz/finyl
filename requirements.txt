@@ -1,0 +1,14 @@
+requests
+flask
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+google-cloud-vision
+gspread
+python-dotenvecho "web: gunicorn APP:app" > Procfile
+
+gunicorn
+oauthlib
+flask-cors
+flask-dance
+Pillow

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link href="{{ url_for('static', filename='globals.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='collection-styles.css') }}" rel="stylesheet">    
+  </head>
+  <body>
+    <div class="collection">
+      <div class="div">
+        <div class="overlap-group">
+          <div class="group"><div class="rectangle"></div></div>
+          <div class="text-wrapper">Your Vinyls</div>
+          
+          <!-- Dynamic record blocks start here -->
+          {% for record in records %}
+          <div class="rectangle-5">
+            <p class="out-of-our-heads-14">{{record['Title']}}<br>- {{ record.year }}</p>
+            <div class="text-wrapper-58">{{record['Year']}}</div>
+            <div class="text-wrapper-59">{{record['Matrix Number']}}</div>
+            <div class="text-wrapper-60">{{record['Median Price']}}</div>
+            <div class="text-wrapper-61">Finyl Suggested Price</div>
+          </div>
+          {% endfor %}
+          <!-- Dynamic record blocks end here -->
+          
+          <!-- You can keep static ellipses and images here if you want -->
+        </div>
+        
+        <!-- Other static layout elements can go here -->
+        
+        <div class="overlap">
+          <div class="three-lines">
+            <img class="line" src="img/line-1.svg" />
+            <img class="line-2" src="img/line-2.svg" />
+            <img class="line-3" src="img/line-3.svg" />
+          </div>
+        </div>
+        <div class="text-wrapper-62">Hi, Ben 👋</div>
+        <img class="chatgpt-image-jul-15" src="/svgs/ChatGPT Image Jul 19, 2025 at 02_06_09 PM.png" />
+        <div class="text-wrapper-63">Collection</div>
+        <p class="text-wrapper-64">View Your Entire Collection. All Digitalised. Easy Access.</p>
+      </div>
+    </div>
+  </body>
+</html>

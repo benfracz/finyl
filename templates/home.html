@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link href="{{ url_for('static', filename='globals.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='home-styles.css') }}" rel="stylesheet">    
+  </head>
+  <body>
+    <div class="home-screen">
+      <div class="div">
+        <div class="landing-page">
+          <div class="div">
+            <div class="overlap">
+              <div class="overlap-group">
+                </div>
+              </div>
+              <div class="text-wrapper">Hi, {{ user_first_name }} 👋</div>
+              <p class="how-may-i-help-you">How may I help</br>you today?</p>
+              <div class="text-wrapper-2">Current Value - GBP</div>
+              <div class="text-wrapper-3">{{ total_value }}</div>
+              <div class="overlap-2">
+                <div class="rectangle"></div>
+                <button type="button" onclick="window.location.href='{{ url_for('scan_page')}}'"style="background:none; border:none; width:100%; height:100%; position:absolute; top:0; left:0; z-index:2; cursor:pointer;">
+                  <div class="text-wrapper-4">Scan</div>
+                </button>
+              </div>              
+              <a href="{{ url_for('collection') }}" class="overlap-3">
+                <!-- Hidden for now, havent finished collection page
+                <div class="rectangle-2"></div>
+                <div class="text-wrapper-5">View</div>> -->
+              </a>
+              <a href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='img/Finyl_logo.png') }}" alt="Go home" style="cursor:pointer; border:none; width:20%; height:22%; position:absolute; top:25px; left:307px; z-index:2; cursor:pointer;" />
+              </a>              
+              
+              <!-- TOP SCAN CARD -->
+              {% if recent_scans %}
+              {% set first = recent_scans[0] %}
+              {% if 'Title' in first and ' - ' in first['Title'] %}
+                {% set artist = first['Title'].split(' - ', 1)[0] %}
+                {% set record = first['Title'].split(' - ', 1)[1] %}
+              {% else %}
+                {% set artist = 'Unknown Artist' %}
+                {% set record = first['Title'] %}
+              {% endif %}
+              <div class="overlap-4">
+                <div class="overlap-5"></div>
+                <p class="text-wrapper-17">
+                  {{ record[:35] ~ ("..." if record|length > 35 else "") }}
+                </p>                
+                <div class="text-wrapper-18">{{ artist }}</div>
+              </div>
+            {% endif %}            
+
+              <!-- RECENT SCANS GROUPED LIST -->
+              {% set rect_classes = ['overlap-11', 'overlap-12', 'overlap-13', 'overlap-14'] %}
+              {% set img_classes = ['overlap-6', 'overlap-7', 'overlap-8', 'overlap-9'] %}
+              {% set title_classes = ['text-wrapper-7', 'text-wrapper-9', 'text-wrapper-11', 'text-wrapper-13'] %}
+              {% set artist_classes = ['text-wrapper-8', 'text-wrapper-10', 'text-wrapper-12', 'text-wrapper-14'] %}
+              <div class="overlap-group-2">
+                {% for record in recent_scans[1:5] %}
+                  <div class="{{ rect_classes[loop.index0] }}"></div>
+                  <div class="{{ img_classes[loop.index0] }}"></div>
+                  {% set parts = record['Title'].split(' - ', 1) %}
+                  {% if parts|length > 1 %}
+                  <p class="{{ title_classes[loop.index0] }}">
+                    {{ parts[1][:35] ~ ("..." if parts[1]|length > 35 else "") }}
+                  </p>
+                  <div class="{{ artist_classes[loop.index0] }}">{{ parts[0] }}</div>
+                {% else %}
+                  <p class="{{ title_classes[loop.index0] }}">
+                    {{ record['Title'][:35] ~ ("..." if record['Title']|length > 35 else "") }}
+                  </p>
+                  <div class="{{ artist_classes[loop.index0] }}">Unknown Artist</div>
+                {% endif %}                
+                {% endfor %}
+              </div>
+
+              <div class="text-wrapper-15">Recent Scans</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

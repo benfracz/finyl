@@ -1,0 +1,359 @@
+.scan-now {
+  background-color: #000000;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.scan-now .div {
+  background-color: #000000;
+  overflow: hidden;
+  width: 393px;
+  height: 852px;
+  position: relative;
+}
+/*
+.scan-now .overlap-group {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  top: 44px;
+  left: 25px;
+  background-color: #171717;
+  border-radius: 18px;
+  border: 1px solid;
+  border-color: #878787;
+}
+
+.scan-now .three-lines {
+  position: relative;
+  width: 16px;
+  height: 12px;
+  top: 12px;
+  left: 9px;
+}
+
+.scan-now .line {
+  top: -1px;
+  position: absolute;
+  width: 16px;
+  height: 1px;
+  left: 0;
+}
+
+.scan-now .img {
+  top: 11px;
+  position: absolute;
+  width: 16px;
+  height: 1px;
+  left: 0;
+}
+
+.scan-now .line-2 {
+  top: 5px;
+  position: absolute;
+  width: 16px;
+  height: 1px;
+  left: 0;
+}
+*/
+.scan-now .text-wrapper {
+  position: absolute;
+  z-index: 2;
+  width: 90px;
+  top: 50px;
+  left: 154px;
+  font-family: "Inter-Light", Helvetica;
+  font-weight: 250;
+  color: #ffffff;
+  font-size: 17px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.scan-now .chatgpt-image-jul {
+  position: absolute;
+  width: 40px;
+  height: 36px;
+  top: 45px;
+  left: 331px;
+}
+
+.scan-now .overlap {
+  position: absolute;
+  width: 314px;
+  height: 233px;
+  top: 108px;
+  left: 40px;
+  border-radius: 30px;
+}
+/* Scan Now Header */
+.scan-now .text-wrapper-2 {
+  position: absolute;
+  z-index: 2;
+  width: 135px;
+  top: 25px;
+  left: 28px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 27px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+/* Digitalise your collection */
+.scan-now .p {
+  position: absolute;
+  z-index: 2;
+  width: 205px;
+  top: 62px;
+  left: 29px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #acacac;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+/* not sure could delete */
+.scan-now .scan-upload-wrapper {
+  position: absolute;
+  width: 174px;
+  height: 60px;
+  top: 156px;
+  left: 21px;
+  background-color: #010107;
+  border-radius: 38px;
+}
+/* Scan & Upload Button */
+.scan-now .scan-upload {
+  position: absolute;
+  z-index: 2;
+  width: 170px;
+  top: 160px;
+  left: 18px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+/* middle rectangle */
+.scan-now .rectangle {
+  width: 315px;
+  left: 0px;
+  position: absolute;
+  z-index: 1;
+  height: 233px;
+  top: 0px;
+  border-radius: 30px;
+  background: linear-gradient(
+      61deg,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(10, 2, 115, 0.6) 38%,
+      rgba(87, 78, 219, 0.6) 68%,
+      rgba(255, 255, 255, 0.6) 100%
+    ),
+    linear-gradient(
+      193deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(10, 2, 115, 1) 38%,
+      rgba(87, 78, 219, 1) 68%,
+      rgba(255, 255, 255, 1) 100%
+    );
+}
+/* left rectangle */
+.scan-now .rectangle-2 {
+  width: 314px;
+  left: -329px;
+  position: absolute;
+  height: 233px;
+  top: 0px;
+  border-radius: 30px;
+  background: linear-gradient(
+      61deg,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(10, 2, 115, 0.6) 38%,
+      rgba(87, 78, 219, 0.6) 68%,
+      rgba(255, 255, 255, 0.6) 100%
+    ),
+    linear-gradient(
+      193deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(10, 2, 115, 1) 38%,
+      rgba(87, 78, 219, 1) 68%,
+      rgba(255, 255, 255, 1) 100%
+    );
+}
+/* right rectangle */
+.scan-now .rectangle-3 {
+  width: 314px;
+  left: 329px;
+  position: absolute;
+  height: 233px;
+  top: 0px;
+  border-radius: 30px;
+  background: linear-gradient(
+      61deg,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(10, 2, 115, 0.6) 38%,
+      rgba(87, 78, 219, 0.6) 68%,
+      rgba(255, 255, 255, 0.6) 100%
+    ),
+    linear-gradient(
+      193deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(10, 2, 115, 1) 38%,
+      rgba(87, 78, 219, 1) 68%,
+      rgba(255, 255, 255, 1) 100%
+    );
+}
+    /* Make "Scan" and "View" blocks behave like clickable buttons */
+.overlap-2,
+.overlap-3 {
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+}
+/* pop effect when hovering for the buttons */
+.overlap-2:hover,
+.overlap-3:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+  transition: all 0.2s ease;
+}
+/* Extra Scan & Upload Styling */
+.scan-upload {
+  background-color: #000;
+  color: white;
+  padding: 20px 20px;
+  border-radius: 30px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Scan status bar at bottom */
+.scan-status-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  min-height: 80px;
+  background: #000; /* Use your black section */
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  padding: 10px 0 18px 0;
+}
+
+.scan-status-text {
+  font-family: "Inter-Regular", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 0;
+  margin-bottom: 8px;
+}
+
+/* Progress bar background */
+.scan-progress-bar-bg {
+  width: 240px;
+  height: 10px;
+  background: #1e1856; /* Your UI dark blue */
+  border-radius: 7px;
+  overflow: hidden;
+  margin-bottom: 8px;
+  border: 1.5px solid #574edb;
+}
+
+/* Progress bar actual */
+.scan-progress-bar {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, #574edb 0%, #ffffff 100%);
+  transition: width 0.4s cubic-bezier(.4,0,.2,1);
+  border-radius: 7px;
+}
+
+.scan-result-message {
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #ff7979; /* Error = red-pink */
+  font-size: 15px;
+  margin-top: 8px;
+  text-align: center;
+  min-height: 24px;
+  padding: 0 15px;
+}
+
+.scan-result-message.success {
+  color: #ffffff; /* Soft green for success */
+}
+.scan-result-message.info {
+  color: #d7d7d7;
+}
+.how-to-section {
+  top: 100;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 370px 40px 0 40px;
+  margin-bottom: 0;
+  width: 100%;
+  max-width: 393px;
+  box-sizing: border-box;
+  font-family: Inter, Helvetica;
+}
+
+.how-to-text {
+  flex: 2 1 0;
+  min-width: 0;
+}
+
+.how-to-header {
+  font-size: 17px;
+  color: #fff;
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-family: "Inter-Regular", Helvetica, Arial, sans-serif;
+  letter-spacing: 0.01em;
+}
+
+.how-to-desc {
+  padding: 10px 5px;
+  font-size: 13px;
+  color: #acacac;
+  font-family: "Inter-Regular", Helvetica, Arial, sans-serif;
+  line-height: 1.45;
+}
+
+.how-to-desc code {
+  font-size: 13px;
+  color: #fff;
+  background: #1e1856;
+  border-radius: 5px;
+  padding: 1px 4px;
+}
+
+.how-to-image {
+  flex: 1 1 48px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: 16px;
+}
+
+.how-to-image img {
+  width: 125px;
+  height: 125px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,0.20));
+}

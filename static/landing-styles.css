@@ -1,0 +1,154 @@
+/* landing globals */
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0px;
+  height: 100%;
+}
+/* a blue color as a generic focus style */
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline: -webkit-focus-ring-color auto 5px !important;
+}
+a {
+  text-decoration: none;
+}
+
+.landing-page {
+    background-color: rgba(255, 255, 255, 1.0);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .landing-page .div {
+    background-color: rgba(255, 255, 255, 1.0);
+    background: linear-gradient(
+      185deg,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 1) 17%,
+      rgba(31, 25, 156, 1) 37%,
+      rgba(107, 99, 255, 1) 59%,
+      rgba(255, 255, 255, 1) 100%
+    );
+    width: 393px;
+    height: 852px;
+    position: relative;
+  }
+  /* positioning of entire hook phrase */
+  .landing-page .ready-to-transform {
+    position: absolute;
+    top: 545px;
+    left: 30px;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: transparent;
+    font-size: 48px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+
+  /* white text */
+  .landing-page .text-wrapper {
+    font-weight: 300;
+    color: #ffffff;
+  }
+/* transform (black text) */  
+  .landing-page .span {
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+  }
+  
+  .landing-page .text-wrapper-2 {
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 700;
+    color: #000000;
+  }
+  
+  .landing-page .overlap {
+    position: absolute;
+    width: 149px;
+    height: 84px;
+    top: 16px;
+    left: 11px;
+  }
+  
+  .landing-page .chatgpt-image-jul {
+    position: absolute;
+    width: 84px;
+    height: 84px;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+  }
+  /* FINYL text */
+  .landing-page .text-wrapper-3 {
+    position: absolute;
+    width: 80px;
+    top: 24px;
+    left: 69px;
+    font-family: "JetBrains Mono-Bold", Helvetica;
+    font-weight: 700;
+    color: #ffffff;
+    font-size: 25px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+  
+  .landing-page .start-now-button {
+    position: absolute;
+    width: 341px;
+    height: 70px;
+    top: 734px;
+    left: 21px;
+  }
+  
+  .landing-page .overlap-group {
+    position: relative;
+    height: 70px;
+    border-radius: 100px;
+  }
+  /* Start Now Button */
+  .landing-page .rectangle {
+    position: absolute;
+    width: 341px;
+    height: 70px;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    border-radius: 100px;
+  }
+  /* Start Now Button */
+  .landing-page .text-wrapper-4 {
+    position: absolute;
+    top: 21px;
+    left: 127px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 501;
+    color: #ffffff;
+    font-size: 21px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+    /* Make "Scan" and "View" blocks behave like clickable buttons */
+    .overlap-2,
+    .overlap-3 {
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    /* pop effect when hovering for the buttons */
+    .overlap-2:hover,
+    .overlap-3:hover {
+      opacity: 0.9;
+      transform: scale(1.02);
+      transition: all 0.2s ease;
+  }

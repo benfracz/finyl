@@ -1,0 +1,51 @@
+body {
+    background: #0c0c0e;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .login-container {
+    background: rgba(24,24,34, 0.92);
+    padding: 40px 32px;
+    border-radius: 18px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.40);
+    text-align: center;
+  }
+  
+  .login-header {
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500; /* Inter-Medium */
+    font-size: 2rem;
+    margin-bottom: 42px;
+    letter-spacing: -0.03em;
+  }
+  
+  .google-btn {
+    display: inline-block;
+    background: #fff;
+    color: #171722;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700; /* Inter-Bold */
+    font-size: 1.05rem;
+    padding: 22px 0;
+    width: 220px;
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 3px 24px rgba(30,24,86,0.10);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.18s, box-shadow 0.18s;
+    margin-top: 10px;
+  }
+  
+  .google-btn:hover, .google-btn:focus {
+    background: #f3f3f3;
+    box-shadow: 0 8px 32px rgba(30,24,86,0.16);
+    outline: none;
+  }
+  
