@@ -57,7 +57,7 @@
     <div class="scan-now">
       <div class="div">
         <div class="overlap-group"></div>
-        <div class="text-wrapper">Hi, {{ session.get('user_first_name', 'there') }} 👋</div>
+        <div class="text-wrapper">Hi, {{ session.get('user_first_name',) }} 👋</div>
       </a>
       <a href="{{ url_for('home') }}">
         <img src="{{ url_for('static', filename='img/Finyl_logo.png') }}" alt="Go home" style="cursor:pointer; border:none; width:20%; height: 9%; position:absolute; top:25px; left:307px; z-index:2; cursor:pointer;" />
