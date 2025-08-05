@@ -140,15 +140,15 @@ def get_user_gspread_client():
             "https://www.googleapis.com/auth/spreadsheets"
         ]
     )
-import google.auth.transport.requests
-from gspread.auth import AuthorizedUserAuth
-
-# Get user credentials object from Google OAuth2 token
-request_adapter = google.auth.transport.requests.Request()
-creds.refresh(request_adapter)  # Ensures token is fresh
-
-auth_client = AuthorizedUserAuth(creds)
-return gspread.Client(auth=auth_client)
+    import google.auth.transport.requests
+    from gspread.auth import AuthorizedUserAuth
+    
+    # Get user credentials object from Google OAuth2 token
+    request_adapter = google.auth.transport.requests.Request()
+    creds.refresh(request_adapter)  # Ensures token is fresh
+    
+    auth_client = AuthorizedUserAuth(creds)
+    return gspread.Client(auth=auth_client)
 
 def clean_title(title):
     return re.sub(r"[^\w\s]", "", title)
