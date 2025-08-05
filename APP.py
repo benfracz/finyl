@@ -128,6 +128,8 @@ def get_user_gspread_client():
     from google.auth.transport.requests import Request
     from gspread.auth import AuthorizedUserAuth
     from google.oauth2.credentials import Credentials
+    import google.auth.transport.requests
+    from gspread.auth import AuthorizedUserAuth
     
     if not google.authorized or not google.token:
         raise Exception("User is not authorized with Google.")
@@ -146,8 +148,6 @@ def get_user_gspread_client():
             "https://www.googleapis.com/auth/spreadsheets"
         ]
     )
-    import google.auth.transport.requests
-    from gspread.auth import AuthorizedUserAuth
     
     # Get user credentials object from Google OAuth2 token
     request_adapter = google.auth.transport.requests.Request()
