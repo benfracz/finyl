@@ -132,6 +132,7 @@ def get_user_gspread_client():
     
     if not google.authorized or not google.token:
         raise Exception("User is not authorized with Google.")
+    print("🔐 get_user_gspread_client token:", google.token)
     token = google.token
     creds = Credentials(
         token=token["access_token"],
@@ -342,6 +343,7 @@ def login():
 def connect_sheet():
     if not google.authorized:
         return redirect(url_for("google.login"))
+    print("🔐 Google token:", google.token)
     if request.method == "POST":
         user_sheet_url = request.form.get("sheet_url")
         match = re.search(r"/spreadsheets/d/([a-zA-Z0-9-_]+)", user_sheet_url)
@@ -354,6 +356,7 @@ def connect_sheet():
 def home():
     if not google.authorized:
         return redirect(url_for("google.login"))
+    print("🔐 Google token:", google.token)
     if 'sheet_id' not in session:
         return redirect(url_for("connect_sheet"))
     resp = google.get("/oauth2/v2/userinfo")
@@ -386,6 +389,7 @@ def home():
 def scan_page():
     if not google.authorized:
         return redirect(url_for("google.login"))
+    print("🔐 Google token:", google.token)
     if 'sheet_id' not in session:
         return redirect(url_for("connect_sheet"))
     resp = google.get("/oauth2/v2/userinfo")
