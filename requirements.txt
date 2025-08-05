@@ -5,8 +5,7 @@ google-auth-oauthlib
 google-auth-httplib2
 google-cloud-vision
 gspread
-python-dotenvecho "web: gunicorn APP:app" > Procfile
-
+python-dotenv
 gunicorn
 oauthlib
 flask-cors
