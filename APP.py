@@ -123,23 +123,18 @@ def inject_user_name():
 
 # ---- NEW: Helper to get user gspread client ----
 def get_user_gspread_client():
-    
-    from google.auth.transport.requests import Request
-    from gspread.auth import AuthorizedUserAuth
-    from google.oauth2.credentials import Credentials
-    import google.auth.transport.requests
-    from gspread.auth import AuthorizedUserAuth
-    
     if not google.authorized or not google.token:
         raise Exception("User is not authorized with Google.")
+
     print("🔐 get_user_gspread_client token:", google.token)
+
     token = google.token
     creds = Credentials(
-        token=token["access_token"],
-        refresh_token=token.get("refresh_token"),
-        token_uri="https://oauth2.googleapis.com/token",
-        client_id=os.getenv("GOOGLE_OAUTH_CLIENT_ID"),
-        client_secret=os.getenv("GOOGLE_OAUTH_CLIENT_SECRET"),
+        token=token['access_token'],
+        refresh_token=token.get('refresh_token'),
+        token_uri='https://oauth2.googleapis.com/token',
+        client_id=os.environ['GOOGLE_OAUTH_CLIENT_ID'],
+        client_secret=os.environ['GOOGLE_OAUTH_CLIENT_SECRET'],
         scopes=[
             "openid",
             "https://www.googleapis.com/auth/userinfo.email",
@@ -148,13 +143,8 @@ def get_user_gspread_client():
             "https://www.googleapis.com/auth/spreadsheets"
         ]
     )
-    
-    # Get user credentials object from Google OAuth2 token
-    request_adapter = google.auth.transport.requests.Request()
-    creds.refresh(request_adapter)  # Ensures token is fresh
-    
-    auth_client = AuthorizedUserAuth(creds)
-    return gspread.Client(auth=auth_client)
+
+    return gspread.authorize(creds)
 
 def clean_title(title):
     return re.sub(r"[^\w\s]", "", title)
