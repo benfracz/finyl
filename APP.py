@@ -123,6 +123,12 @@ def inject_user_name():
 
 # ---- NEW: Helper to get user gspread client ----
 def get_user_gspread_client():
+    
+    from flask_dance.contrib.google import google
+    from google.auth.transport.requests import Request
+    from gspread.auth import AuthorizedUserAuth
+    from google.oauth2.credentials import Credentials
+    
     if not google.authorized or not google.token:
         raise Exception("User is not authorized with Google.")
     token = google.token
