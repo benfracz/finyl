@@ -4,28 +4,201 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta charset="utf-8" />
     <link href="{{ url_for('static', filename='globals.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='landing-styles.css') }}" rel="stylesheet">    
+    <link href="{{ url_for('static', filename='scan-styles.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+    <style>
+      #inAppWarning {
+        display: none;
+        background: #111;
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        width: 100%;
+        height: 100%;
+        font-family: 'Inter', sans-serif;
+      }
+
+      #inAppWarning h2 {
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+
+      #inAppWarning p {
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+      }
+
+      #inAppWarning button {
+        background: white;
+        color: black;
+        border: none;
+        padding: 0.75rem 1.25rem;
+        font-size: 1rem;
+        cursor: pointer;
+        border-radius: 0.5rem;
+      }
+    </style>
   </head>
   <body>
-    <div class="landing-page">
-      <div class="div">
-        <p class="ready-to-transform">
-          <span class="text-wrapper">Ready to </span>
-          <span class="span">transform</span>
-          <span class="text-wrapper-2"></span>
-          <span class="text-wrapper">your collection?</span>
-        </p>
-        <div class="overlap">
-          <img class="chatgpt-image-jul" src="{{ url_for('static', filename='img/Finyl_logo.png') }}" />
-          <div class="text-wrapper-3">FINYL</div>
-        </div>
-        <a href="{{ url_for('login') }}" class="start-now-button">
-          <div class="overlap-group">
-            <div class="rectangle"></div>
-            <div class="text-wrapper-4">Start now</div>
-          </div>
-        </a>        
-      </div>
+    <!-- 🧠 In-App Browser Warning -->
+    <div id="inAppWarning">
+      <h2>⚠️ Google Login Won’t Work Here</h2>
+      <p>
+        It looks like you’ve opened this in a social media app’s built-in browser.<br><br>
+        Please tap the <strong>••• menu</strong> and choose <strong>“Open in Browser”</strong> to continue.
+      </p>
+      <button onclick="copyLink()">📋 Copy Link</button>
     </div>
+
+    <div class="scan-now">
+      <div class="div">
+        <div class="overlap-group"></div>
+        <div class="text-wrapper">Hi, {{ session.get('user_first_name', 'there') }} 👋</div>
+      </a>
+      <a href="{{ url_for('home') }}">
+        <img src="{{ url_for('static', filename='img/Finyl_logo.png') }}" alt="Go home" style="cursor:pointer; border:none; width:20%; height: 9%; position:absolute; top:25px; left:307px; z-index:2; cursor:pointer;" />
+      </a>
+
+      <div class="overlap">
+        <div class="text-wrapper-2">Scan Now</div>
+        <p class="p">Digitalise Your Collection in Minutes</p>
+        <button type="button" class="scan-upload">Scan & Upload</button>
+        <input type="file" name="image" id="imageUpload" accept="image/*" capture="environment" style="display: none;" required />
+        <div class="rectangle"></div>
+        <div class="rectangle-2"></div>
+      </div>
+
+      <div class="how-to-section">
+        <div class="how-to-text">
+          <div class="how-to-header">How to Use?</div>
+          <div class="how-to-desc">
+            Snap a photo of your record's <strong>matrix number</strong> using your <b>phone camera!</b><br><br>
+            Matrix numbers are identifiers written on your record's <strong>dead wax</strong> (inner-most black ring).<br><br>
+            Finyl AI then searches the web for pricing info and presents it in a handy Google Sheet!
+          </div>
+        </div>
+        <div class="how-to-image">
+          <img src="{{ url_for('static', filename='img/Matrix.png') }}" />
+        </div>
+      </div>  
+
+      <div class="scan-status-bar">
+        <div id="loading-area" hidden>
+          <span class="scan-status-text">Uploading...</span>
+          <div class="scan-progress-bar-bg">
+            <div class="scan-progress-bar" id="progress-bar"></div>
+          </div>
+        </div>
+        <div id="result" class="scan-result-message"></div>
+      </div>
+
+      <script>
+        // 🕵️ Detect In-App Browsers
+        function isInAppBrowser() {
+          const ua = navigator.userAgent || navigator.vendor || window.opera;
+          return (
+            ua.includes("Instagram") ||
+            ua.includes("FBAN") || ua.includes("FBAV") ||
+            ua.includes("LinkedIn") || ua.includes("InApp")
+          );
+        }
+
+        // 📋 Copy current URL to clipboard
+        function copyLink() {
+          navigator.clipboard.writeText(window.location.href);
+          alert("Link copied! Paste it into your browser to continue.");
+        }
+
+        // Show warning if in in-app browser
+        if (isInAppBrowser()) {
+          document.getElementById("inAppWarning").style.display = "block";
+          document.body.style.overflow = "hidden";
+        }
+
+        const fileInput = document.getElementById('imageUpload');
+        const result = document.getElementById('result');
+        const loadingArea = document.getElementById('loading-area');
+        const progressBar = document.getElementById('progress-bar');
+
+        function showProgressBar() {
+          loadingArea.hidden = false;
+          progressBar.style.width = '0%';
+          let percent = 0;
+          progressBar.style.width = '0%';
+          window._progressInterval = setInterval(() => {
+            if (percent < 95) {
+              percent += Math.random() * 5 + 1;
+              if (percent > 95) percent = 95;
+              progressBar.style.width = percent + '%';
+            }
+          }, 220);
+        }
+
+        function hideProgressBar() {
+          if (window._progressInterval) clearInterval(window._progressInterval);
+          progressBar.style.width = '100%';
+          setTimeout(() => { loadingArea.hidden = true; progressBar.style.width = '0%'; }, 600);
+        }
+
+        function showMessage(text, type = 'error') {
+          result.textContent = text;
+          result.className = 'scan-result-message ' + (type === 'success' ? 'success' : type === 'info' ? 'info' : '');
+        }
+
+        fileInput.addEventListener('change', async function () {
+          if (!fileInput.files.length) return;
+          result.textContent = '';
+          result.className = 'scan-result-message info';
+          showProgressBar();
+
+          const formData = new FormData();
+          formData.append('image', fileInput.files[0]);
+
+          try {
+            const response = await fetch('/scan', {
+              method: 'POST',
+              body: formData,
+              credentials: 'include',
+              headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+              }
+            });
+
+            if (!response.ok) {
+              const contentType = response.headers.get('content-type');
+              if (contentType && contentType.includes('application/json')) {
+                const { error } = await response.json();
+                throw new Error(error || 'Upload failed');
+              } else {
+                const text = await response.text();
+                throw new Error(text || 'Upload failed');
+              }
+            }
+
+            const json = await response.json();
+            const record = json.data;
+
+            if (record && 'low_price' in record && 'high_price' in record && 'median_price' in record) {
+              showMessage(`✅ Logged successfully\n\n🎶 Title: ${record.title}\n📀 Matrix: ${record.matrix_number}\n🕰 Year: ${record.year}\n\n💷 eBay Price Range:\nLowest: £${record.low_price}\nHighest: £${record.high_price}\nAverage: £${record.median_price}`, 'success');
+            } else {
+              showMessage(`✅ Logged, but no eBay price data found.`, 'success');
+            }
+          } catch (err) {
+            console.error("🛑 Error in fetch:", err);
+            showMessage('❌ Load failed: ' + (err.message || 'Unknown error'), 'error');
+          } finally {
+            hideProgressBar();
+            fileInput.value = '';
+          }
+        });
+
+        document.querySelector('.scan-upload').addEventListener('click', function () {
+          fileInput.click();
+        });
+      </script>
   </body>
 </html>
