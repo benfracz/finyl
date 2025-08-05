@@ -45,7 +45,7 @@ SCOPES = [
 ]
 
 creds = service_account.Credentials.from_service_account_file(
-    '/etc/secrets/google_creds.json'
+    '/etc/secrets/credentials.json'
 ).with_scopes(SCOPES)
 
 vision_client = vision.ImageAnnotatorClient(credentials=creds)
